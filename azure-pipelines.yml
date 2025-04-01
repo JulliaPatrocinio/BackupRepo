@@ -10,5 +10,3 @@ steps:
     tar -czf backup.tar.gz BackupRepo
     az storage blob upload --container-name backups --file backup.tar.gz --name backup.tar.gz
   displayName: 'Backup repository'
-
-variables:
