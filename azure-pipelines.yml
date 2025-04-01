@@ -1,12 +1,12 @@
 trigger:
--main
+- main
 
 pool:
-vmImage: 'ubuntu-latest'
+  vmImage: 'ubuntu-latest'
 
-Steps:
--script: |
-  gift clone: https://github.com/JulliaPatrocinio/BackupRepo.git
-  tar - cfz backup.tar BackupRepo
-  az storage blob upload --container-name backups --file backup.tar.gz --name backup.tar.gz
+steps:
+- script: |
+    git clone https://github.com/JulliaPatrocinio/BackupRepo.git
+    tar -czf backup.tar.gz BackupRepo
+    az storage blob upload --container-name backups --file backup.tar.gz --name backup.tar.gz
   displayName: 'Backup repository'
