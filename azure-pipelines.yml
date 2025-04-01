@@ -6,7 +6,9 @@ pool:
 
 steps:
 - script: |
-    git clone https://github.com/JulliaPatrocinio/BackupRepo.git
+    git clone https://$(PAT)@github.com/JulliaPatrocinio/BackupRepo.git
     tar -czf backup.tar.gz BackupRepo
     az storage blob upload --container-name backups --file backup.tar.gz --name backup.tar.gz
   displayName: 'Backup repository'
+
+variables:
