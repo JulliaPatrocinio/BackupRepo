@@ -1,0 +1,12 @@
+trigger:
+-main
+
+pool:
+vmImage: 'ubuntu-latest'
+
+Steps:
+-script: |
+  gift clone: https://github.com/JulliaPatrocinio/BackupRepo.git
+  tar - cfz backup.tar BackupRepo
+  az storage blob upload --container-name backups --file backup.tar.gz --name backup.tar.gz
+  displayName: 'Backup repository'
